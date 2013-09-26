@@ -11,11 +11,19 @@ void main() {
    */
   
   //We have to convert the degrees to radians
-  double x = cos(33 * PI / 180) * 120;
-  double y = sin(33 * PI / 180) * 120;
+  double x = calculateCosInDegree(33) * 120;
+  double y = calculateSinInDegree(33) * 120;
   
   x = x + 490;
   y = y + 330;
   
   print("The end point of the line is at (${x.toStringAsFixed(2)}, ${y.toStringAsFixed(2)})");
+}
+
+double calculateCosInDegree(int radian) {
+  return cos(radian * PI / 180);
+}
+
+double calculateSinInDegree(int radian) {
+  return sin(radian * PI / 180);
 }

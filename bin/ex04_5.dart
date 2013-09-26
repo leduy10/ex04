@@ -1,6 +1,10 @@
 void main() {
-  for(int count = 1; count <= 20; count++) {
-    int result = count * 12;
-    print("12 x $count = $result");
+  printMultiplicationTable(12, 20);
+}
+
+void printMultiplicationTable(int multiplier, int count) {
+  for(int i = 1; i <= count; i++) {
+    int result = i * multiplier;
+    print("$multiplier x $i = $result");
   }
 }

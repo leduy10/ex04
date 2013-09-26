@@ -1,20 +1,18 @@
 void main() {
-  var now = new DateTime.now();
-  var nowAtNoon = new DateTime(now.year, now.month, now.day, 12);
-  var birthdayAtNoon = new DateTime(1981, 12, 1, 12);
+  DateTime now = new DateTime.now();
+  DateTime nowAtNoon = new DateTime(now.year, now.month, now.day, 12);
+  DateTime birthdayAtNoon = new DateTime(1981, 12, 1, 12);
   
   print("My birthday at noon is $birthdayAtNoon");
   print("Today at noon is $nowAtNoon");
   
-  var timeDuration = nowAtNoon.difference(birthdayAtNoon);
-  
-  var timeInSeconds = timeDuration.inSeconds;
-  var timeInMinutes = timeDuration.inMinutes;
-  var timeInHours = timeDuration.inHours;
-  var timeInDays = timeDuration.inDays;
+  int timeInSeconds = calculateSeconds(nowAtNoon, birthdayAtNoon);
+  int timeInMinutes = calculateMinutes(nowAtNoon, birthdayAtNoon);
+  int timeInHours = calculateHours(nowAtNoon, birthdayAtNoon);
+  int timeInDays = calculateDays(nowAtNoon, birthdayAtNoon);
 
-  var timeInMonths = timeInDays / 365 * 12;
-  var timeInYears = timeInDays / 365;
+  double timeInMonths = calculateMonths(nowAtNoon, birthdayAtNoon);
+  double timeInYears = calculateYears(nowAtNoon, birthdayAtNoon);
   
   print("Between my birthday at noon and today at noon, there is $timeInSeconds seconds");
   print("Between my birthday at noon and today at noon, there is $timeInMinutes minutes");
@@ -22,4 +20,32 @@ void main() {
   print("Between my birthday at noon and today at noon, there is $timeInDays days");
   print("Between my birthday at noon and today at noon, there is ${timeInMonths.toStringAsFixed(2)} months");
   print("Between my birthday at noon and today at noon, there is ${timeInYears.toStringAsFixed(2)} years");
+}
+
+int calculateSeconds(DateTime i, DateTime j) {
+  var timeDuration = i.difference(j);
+  return timeDuration.inSeconds;
+}
+
+int calculateMinutes(DateTime i, DateTime j) {
+  var timeDuration = i.difference(j);
+  return timeDuration.inMinutes;
+}
+
+int calculateHours(DateTime i, DateTime j) {
+  var timeDuration = i.difference(j);
+  return timeDuration.inHours;
+}
+
+int calculateDays(DateTime i, DateTime j) {
+  var timeDuration = i.difference(j);
+  return timeDuration.inDays;
+}
+
+double calculateMonths(DateTime i, DateTime j) {
+  return calculateDays(i, j) / 365 * 12;
+}
+
+double calculateYears(DateTime i, DateTime j) {
+  return calculateDays(i, j) / 365;
 }
