@@ -6,46 +6,19 @@ void main() {
   print("My birthday at noon is $birthdayAtNoon");
   print("Today at noon is $nowAtNoon");
   
-  int timeInSeconds = calculateSeconds(nowAtNoon, birthdayAtNoon);
-  int timeInMinutes = calculateMinutes(nowAtNoon, birthdayAtNoon);
-  int timeInHours = calculateHours(nowAtNoon, birthdayAtNoon);
-  int timeInDays = calculateDays(nowAtNoon, birthdayAtNoon);
-
-  double timeInMonths = calculateMonths(nowAtNoon, birthdayAtNoon);
-  double timeInYears = calculateYears(nowAtNoon, birthdayAtNoon);
+  DateTime diff = getDateDifference(birthdayAtNoon, nowAtNoon);
   
-  print("Between my birthday at noon and today at noon, there is $timeInSeconds seconds");
-  print("Between my birthday at noon and today at noon, there is $timeInMinutes minutes");
-  print("Between my birthday at noon and today at noon, there is $timeInHours hours");
-  print("Between my birthday at noon and today at noon, there is $timeInDays days");
-  print("Between my birthday at noon and today at noon, there is ${timeInMonths.toStringAsFixed(2)} months");
-  print("Between my birthday at noon and today at noon, there is ${timeInYears.toStringAsFixed(2)} years");
+  print("The difference between those two dates is:");
+  print("${diff.year} years");
+  print("${diff.month} months");
+  print("${diff.day} days");
+  print("${diff.hour} hours");
+  print("${diff.minute} minutes");
+  print("${diff.second} seconds");
 }
 
-int calculateSeconds(DateTime i, DateTime j) {
-  var timeDuration = i.difference(j);
-  return timeDuration.inSeconds;
-}
-
-int calculateMinutes(DateTime i, DateTime j) {
-  var timeDuration = i.difference(j);
-  return timeDuration.inMinutes;
-}
-
-int calculateHours(DateTime i, DateTime j) {
-  var timeDuration = i.difference(j);
-  return timeDuration.inHours;
-}
-
-int calculateDays(DateTime i, DateTime j) {
-  var timeDuration = i.difference(j);
-  return timeDuration.inDays;
-}
-
-double calculateMonths(DateTime i, DateTime j) {
-  return calculateDays(i, j) / 365 * 12;
-}
-
-double calculateYears(DateTime i, DateTime j) {
-  return calculateDays(i, j) / 365;
+DateTime getDateDifference(DateTime i, DateTime j) {
+  Duration durationDiff = j.difference(i);
+  DateTime dateDiff = new DateTime(0).add(durationDiff);
+  return dateDiff;
 }
