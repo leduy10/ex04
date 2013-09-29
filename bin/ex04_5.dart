@@ -1,10 +1,15 @@
 void main() {
-  printMultiplicationTable(12, 20);
+  String result = printMultiplicationTable(12, 20);
+  print(result);
 }
 
-void printMultiplicationTable(int multiplier, int count) {
+String printMultiplicationTable(int multiplier, int count) {
+  String returnValue = "";
+  
   for(int i = 1; i <= count; i++) {
     int result = i * multiplier;
-    print("$multiplier x $i = $result");
+    returnValue = "$returnValue$multiplier x $i = $result\n";
   }
+  
+  return returnValue;
 }

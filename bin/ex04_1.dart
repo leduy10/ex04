@@ -1,26 +1,30 @@
 void main() {
-  printFibonacci(11);
+  String result = getFibonacci(11);
+  print(result);
 }
 
-void printFibonacci(int n) {
+String getFibonacci(int n) {
   int i = 0;
   int j = 1;
+  String fibonacciList;
   
-  //printing of the first 2 numbers
+  //adding of the first 2 numbers
   if(n >= 1) {
-    print(i);
+    fibonacciList = "0";
   }
   if(n >= 2) {
-    print(j);
+    fibonacciList = "$fibonacciList 1";
   }
   
   if(n >= 3) {
-    //printing of the next numbers 
+    //adding of the next numbers 
     for(int count = 2; count < n; count++) {
       int sum = i + j;
-      print(sum);
+      fibonacciList = "$fibonacciList $sum";
       i = j;
       j = sum;
     }
   }
+  
+  return fibonacciList;
 }
